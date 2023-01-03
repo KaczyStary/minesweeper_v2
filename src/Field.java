@@ -1,4 +1,7 @@
+import java.awt.image.BufferedImage;
+
 public class Field {
+    public BufferedImage image;
     boolean flag;
     boolean mine;
     boolean revealed;

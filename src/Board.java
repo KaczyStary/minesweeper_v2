@@ -1,8 +1,14 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Board {
+public class Board extends JPanel implements Runnable{
     int col;
     int row;
+    public int screenWidth=720;
+    public int screenHeight=480;
+    Thread gameThread;
     public int getCol() {
         return col;
     }
@@ -19,6 +25,37 @@ public class Board {
         this.row = row;
     }
     Field[][] fields;
+    public Board(){
+        this.setPreferredSize(new Dimension(screenWidth,screenHeight));
+        this.setBackground(Color.black);
+        this.setDoubleBuffered(true);
+        this.setFocusable(true);
+    }
+    public void startGameThread(){
+        gameThread=new Thread(this);
+        gameThread.start();
+    }
+    public void update(){
+
+    }
+    @Override
+    public void run() {
+//        setDifficulty(GAME_DIFFICULTY.NORMAL);
+//        generateFields(5,5);
+//        fillFields();
+//        fillFieldWithMines();
+//
+//        int move_1=0;
+//        int move_2=0;
+//
+//        while (gameThread!=null){
+//            if (){
+//                update();
+//                repaint();
+//            }
+//        }
+    }
+
     enum GAME_DIFFICULTY{
         EASY,
         NORMAL,
