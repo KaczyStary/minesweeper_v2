@@ -1,5 +1,5 @@
 import java.awt.image.BufferedImage;
 
-public class BoardDrawing {
+public class FieldPic {
     public BufferedImage image;
 }

@@ -1,11 +1,10 @@
 import java.awt.image.BufferedImage;
 
 public class Field {
-    public BufferedImage image;
+
     boolean flag;
     boolean mine;
     boolean revealed;
-
     public boolean isFlag() {
         return flag;
     }
@@ -38,4 +37,5 @@ public class Field {
         this.mine = mine;
         this.revealed = revealed;
     }
+
 }

@@ -4,20 +4,24 @@ public class Main {
     public static void main(String[] args) {
 
         JFrame window = new JFrame();
-        Board board = new Board();
+        BoardPanel board = new BoardPanel();
+        BoardDrawingManager boardDrawingManager=new BoardDrawingManager(board);
 
-//        board.setDifficulty(Board.GAME_DIFFICULTY.HARD);
-//        board.generateFields(5,5);
-//        board.fillFields();
-//        board.fillFieldWithMines();
-//        board.showBoard();
+//        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        window.setResizable(false);
+//        window.setTitle("Minesweeper");
+//        window.add(board);
+//        window.pack();
+//        window.setLocationRelativeTo(null);
+//        window.setVisible(true);
 
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setTitle("Minesweeper");
-        window.add(board);
-        window.pack();
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
+        board.GameStart();
+
+        boardDrawingManager.generateDrawFieldBoard();
+        boardDrawingManager.soutBoard();
+
+        //board.startGameThread();
+
+
     }
 }
