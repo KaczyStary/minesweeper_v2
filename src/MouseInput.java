@@ -2,23 +2,28 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MouseInput implements MouseListener {
-    BoardActions boardActions;
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
+
         int mx = e.getX();
         int my = e.getY();
 
-        System.out.println("left_click, "+"x="+e.getX()+" ,y="+e.getY());
+        mx=mx/BoardPanel.tileSize;
+        my=my/BoardPanel.tileSize;
 
-        if (mx>0&&mx<100){
-            if (my>0&&my<100){
-                boardActions.toggleReveal(0,0);
-            }
+        //LEFT BUTTON
+        if (e.getButton()==MouseEvent.BUTTON1){
+            BoardActions.toggleReveal(my,mx);
+            BoardActions.bombsAroundFields(my,mx);
+            System.out.println(BoardActions.bombsAroundFields(my,mx));
+        }
+        //RIGHT BUTTON
+        if (e.getButton()==MouseEvent.BUTTON3){
+            BoardActions.toggleFlag(my,mx);
         }
 
     }

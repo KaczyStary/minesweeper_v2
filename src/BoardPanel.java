@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.io.IOException;
@@ -8,11 +9,11 @@ import java.util.Random;
 public class BoardPanel extends JPanel implements Runnable {
     public int col=6; //COL OF GAME BOARD
     public int row=9; //ROW OF GAME BOARD
-    int originalTileSize = 12;
-    int scale = 3;
+    static int originalTileSize = 12;
+    static int scale = 3;
     int maxScreenCol = 16; //COL OF SCREEN
     int maxScreenRow = 12; //ROW OF SCREEN
-    int tileSize = originalTileSize * scale; //3*12=36
+    public static int tileSize = originalTileSize * scale; //3*12=36
     int screenWidth = tileSize * maxScreenRow; //12*36=432
     int screenHeight = tileSize * maxScreenCol; //16*36=576
     int gameScreenWitdh=tileSize*row;
@@ -28,8 +29,18 @@ public class BoardPanel extends JPanel implements Runnable {
         NORMAL,
         HARD;
     }
+    enum GAME_STATE{
+        RUNNING,
+        FINISHED_LOSS,
+        FINISHED_WIN;
+    }
+    enum GAME_SCREEN{
+        MENU,
+        GAME;
+    }
 
     GAME_DIFFICULTY GameDif;
+    GAME_STATE GameState;
 
     public BoardPanel() {
         this.setPreferredSize(new Dimension(gameScreenWitdh, gameScreenHeight));
@@ -39,7 +50,7 @@ public class BoardPanel extends JPanel implements Runnable {
         this.addMouseListener(mouseInput);
     }
     public void startGameThread() {
-
+        GameState=GAME_STATE.RUNNING; //START GAME
         GameDif = GAME_DIFFICULTY.NORMAL; //DEFAULT GAME DIFF
 
         generateFields(); //GENERATE BOARD ONCE
@@ -47,6 +58,8 @@ public class BoardPanel extends JPanel implements Runnable {
 
         boardM.generateDrawFieldBoard(); //GENERATE SECOOND BOARD WITH SAME SIZE AS FIRST BOARD
         boardM.setCompareBoard(); //FILLS SECOOND BOARD WITH SAME PARAMETERS AS FIRST BOARD, BUT WITH INTS
+
+        boardActions.bombsLeftBoard();
 
         gameThread = new Thread(this);
         gameThread.start();
@@ -56,6 +69,8 @@ public class BoardPanel extends JPanel implements Runnable {
         boardM.setCompareBoard(); //GAME ACTION -> fields BOARD -> COPY field BOARD to
                                   // fieldDraws BOARD -> setCompare FOR COPY ->
                                   // DRAW COPIED fieldDraws BOARD
+
+        boardActions.checkBoard(); //CHECK IF THERE IS STILL MINES ON BOARD
     }
 
     @Override
@@ -63,10 +78,24 @@ public class BoardPanel extends JPanel implements Runnable {
 
         repaint();
 
+        System.out.println("bombs around 0,0: "+boardActions.bombsAroundFields(3,3));
 
-        while (gameThread!=null){
-            update();
-            repaint();
+
+        while (gameThread!=null&&GameState==GAME_STATE.RUNNING){
+            while (GameState==GAME_STATE.RUNNING) {
+                update();
+                repaint();
+            }
+
+            if (GameState==GAME_STATE.FINISHED_WIN){
+                repaint();
+                System.out.println("WIN");
+            }
+
+            if (GameState==GAME_STATE.FINISHED_LOSS){
+                repaint();
+                System.out.println("LOSS");
+            }
         }
 
     }
