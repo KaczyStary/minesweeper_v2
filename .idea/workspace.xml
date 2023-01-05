@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="trying to draw board">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BoardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FieldDraw.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FieldPic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VarOfBoardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/no_reveal.png" afterDir="false" />
+    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="tmp">
+      <change afterPath="$PROJECT_DIR$/src/BoardActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MouseInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoardDrawing.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardDrawingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardDrawingManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672753871320</updated>
       <workItem from="1672753872737" duration="12996000" />
-      <workItem from="1672839970716" duration="20301000" />
+      <workItem from="1672839970716" duration="29829000" />
     </task>
     <task id="LOCAL-00001" summary="implemented most of minesweeper functions, going to dev jpanel">
       <created>1672775659462</created>
@@ -80,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672779276600</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="tmp">
+      <created>1672863133050</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672863133051</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implemented most of minesweeper functions, going to dev jpanel" />
     <MESSAGE value="trying to draw board" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to draw board" />
+    <MESSAGE value="tmp" />
+    <option name="LAST_COMMIT_MESSAGE" value="tmp" />
   </component>
 </project>

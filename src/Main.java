@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,21 +7,17 @@ public class Main {
         JFrame window = new JFrame();
         BoardPanel board = new BoardPanel();
         BoardDrawingManager boardDrawingManager=new BoardDrawingManager(board);
+        BoardActions boardActions=new BoardActions(board);
 
-//        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        window.setResizable(false);
-//        window.setTitle("Minesweeper");
-//        window.add(board);
-//        window.pack();
-//        window.setLocationRelativeTo(null);
-//        window.setVisible(true);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Minesweeper");
+        window.add(board);
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
 
-        board.GameStart();
-
-        boardDrawingManager.generateDrawFieldBoard();
-        boardDrawingManager.soutBoard();
-
-        //board.startGameThread();
+        board.startGameThread();
 
 
     }

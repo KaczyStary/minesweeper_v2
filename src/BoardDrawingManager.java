@@ -6,11 +6,13 @@ import java.io.IOException;
 public class BoardDrawingManager {
     BoardPanel bp;
     FieldDraw[][] fieldDraws;
-
+    FieldPic[] fieldPics;
 
 
     public BoardDrawingManager(BoardPanel bp) {
         this.bp = bp;
+        fieldPics=new FieldPic[10];
+        getFileImage();
     }
 
     void generateDrawFieldBoard(){
@@ -26,118 +28,86 @@ public class BoardDrawingManager {
         }
     }
 
-//    public void getFileImage() {
-//        try {
-//            //BLANK
-//            field[0] = new Field();
-//            field[0].image = ImageIO.read(getClass().getResourceAsStream(""));
-//            //REVEALED
-//            field[1] = new Field();
-//            field[1].image = ImageIO.read(getClass().getResourceAsStream(""));
-//            //FLAG
-//            field[2] = new Field();
-//            field[2].image = ImageIO.read(getClass().getResourceAsStream(""));
-//            //MINE
-//            field[3] = new Field();
-//            field[3].image = ImageIO.read(getClass().getResourceAsStream(""));
-////            field[4]=new Field();
-////            field[4].image= ImageIO.read(getClass().getResourceAsStream(""));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void getFileImage() {
+        try {
+            fieldPics[0] = new FieldPic();
+            fieldPics[0].image = ImageIO.read(getClass().getResourceAsStream("/res/no_reveal.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void setBoard(){
+    public void setCompareBoard(){
 
         for (int col=0; col < bp.col; col++) {
             for (int row = 0; row < bp.row; row++) {
-                if(bp.fields[col][row].isFlag()) {
-                    //FLAG
-                    //fieldDraws[col][row].setFlag(1);
-                    //FLAG
-                }else if(!bp.fields[col][row].isFlag()) {
-                    System.out.println("noflag");
-                    //NO FLAG
-                    if(bp.fields[col][row].isRevealed()) {
-                        //REVEALED
-                        //fieldDraws[col][row].setRevealed(1);
-                        //REVEALED
-                        if (bp.fields[col][row].isMine()){
-                            //MINE
-                            //fieldDraws[col][row].setMine(1);
-                            //MINE
-                        }else if (!bp.fields[col][row].isMine()){
-                            //NO MINE
-                        }
-                    }else if (!bp.fields[col][row].isRevealed()) {
-                        //NO REVEALED
-                    }
-                    //NO FLAG
+
+                if (!bp.fields[col][row].isRevealed()){
+                    fieldDraws[col][row].setRevealed(0);
+                } else if (bp.fields[col][row].isRevealed()) {
+                    fieldDraws[col][row].setRevealed(1);
                 }
+
+                if (!bp.fields[col][row].isFlag()){
+                    fieldDraws[col][row].setFlag(0);
+                } else if (bp.fields[col][row].isFlag()) {
+                    fieldDraws[col][row].setFlag(1);
+                }
+
+                if (!bp.fields[col][row].isMine()){
+                    fieldDraws[col][row].setMine(0);
+                } else if (bp.fields[col][row].isMine()) {
+                    fieldDraws[col][row].setMine(1);
+                }
+
             }
         }
     }
 
-    public void soutBoard(){
-        for (int col = 0; col <bp.col ; col++) {
-            for (int row = 0; row <bp.row ; row++) {
-                System.out.print("[");
-                if (fieldDraws[col][row].getRevealed()==1){
-                    //REVEALED
-                    System.out.print("R,");
-                    if (fieldDraws[col][row].getMine()==0){
-                        //REVEALED, NO MINE
-                        System.out.print("nM,");
-                        if (fieldDraws[col][row].getFlag()==0){
+    public void draw(Graphics2D g2){
+        int dX=0;
+        int dY=0;
+
+        for (int sCol = 0; sCol <bp.col ; sCol++) {
+            for (int sRow = 0; sRow <bp.row ; sRow++) {
+                if (fieldDraws[sCol][sRow].getRevealed()==1){
+                    if (fieldDraws[sCol][sRow].getMine()==0){
+                        if (fieldDraws[sCol][sRow].getFlag()==0){
                             //REVEALED, NO MINE, NO FLAG
-                            System.out.print("nF");
-                        }else if (fieldDraws[col][row].getFlag()==1){
+                        }else if (fieldDraws[sCol][sRow].getFlag()==1){
                             //REVEALED, NO MINE, FLAG
-                            System.out.print("F");
                         }
-                    } else if (fieldDraws[col][row].getMine()==1) {
-                        //REVEALED, MINE
-                        System.out.print("M,");
-                        if (fieldDraws[col][row].getFlag()==0){
+                    } else if (fieldDraws[sCol][sRow].getMine()==1) {
+                        if (fieldDraws[sCol][sRow].getFlag()==0){
                             //REVEALED, MINE, NO FLAG
-                            System.out.print("nF");
-                        }else if (fieldDraws[col][row].getFlag()==1){
-                            //REVEALED, NO MINE, FLAG
-                            System.out.print("F");
+                        }else if (fieldDraws[sCol][sRow].getFlag()==1){
+                            //REVEALED, MINE, FLAG
                         }
                     }
-                } else if (fieldDraws[col][row].getRevealed()==0) {
-                    //NO REVEALED
-                    System.out.print("nR,");
-                    if (fieldDraws[col][row].getMine()==0){
-                        //NO REVEALED, NO MINE
-                        System.out.print("nM,");
-                        if (fieldDraws[col][row].getFlag()==0){
+                } else if (fieldDraws[sCol][sRow].getRevealed()==0) {
+                    if (fieldDraws[sCol][sRow].getMine()==0){
+                        if (fieldDraws[sCol][sRow].getFlag()==0){
                             //NO REVEALED, NO MINE, NO FLAG
-                            System.out.print("nF");
-                        }else if (fieldDraws[col][row].getFlag()==1){
+                            g2.drawImage(fieldPics[0].image,dX,dY,bp.tileSize,bp.tileSize,null);
+                            //System.out.println("g");
+                        }else if (fieldDraws[sCol][sRow].getFlag()==1){
                             //NO REVEALED, NO MINE, FLAG
-                            System.out.print("F");
                         }
-                    } else if (fieldDraws[col][row].getMine()==1) {
-                        //NO REVEALED, MINE
-                        System.out.print("M,");
-                        if (fieldDraws[col][row].getFlag()==0){
-                            //REVEALED, MINE, NO FLAG
-                            System.out.print("nF");
-                        }else if (fieldDraws[col][row].getFlag()==1){
-                            //REVEALED, NO MINE, FLAG
-                            System.out.print("F");
+                    } else if (fieldDraws[sCol][sRow].getMine()==1) {
+                        if (fieldDraws[sCol][sRow].getFlag()==0){
+                            //NO REVEALED, MINE, NO FLAG
+                            g2.drawImage(fieldPics[0].image,dX,dY,bp.tileSize,bp.tileSize,null);
+                        }else if (fieldDraws[sCol][sRow].getFlag()==1){
+                            //NO REVEALED, MINE, FLAG
                         }
                     }
                 }
-                System.out.print("]");
+                dX+=bp.tileSize;
             }
-            System.out.println();
+            dY+=bp.tileSize;
+            dX=0;
         }
     }
-
-
 }
 
 
