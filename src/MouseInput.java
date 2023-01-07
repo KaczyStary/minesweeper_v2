@@ -19,7 +19,8 @@ public class MouseInput implements MouseListener {
         if (e.getButton()==MouseEvent.BUTTON1){
             BoardActions.toggleReveal(my,mx);
             BoardActions.bombsAroundFields(my,mx);
-            System.out.println(BoardActions.bombsAroundFields(my,mx));
+            System.out.println("bombs around [col]: "+my+" ,[row]: "+mx+": "+BoardActions.bombsAroundFields(my,mx));
+
         }
         //RIGHT BUTTON
         if (e.getButton()==MouseEvent.BUTTON3){

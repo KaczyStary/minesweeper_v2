@@ -48,98 +48,92 @@ public class BoardActions {
         return bombsLeft;
     }
 
-    public static int bombsAroundFields(int col, int row){
-        int bombsAroundfield=0;
-        int fCol=0;
-        int fRow=0;
+    public static int bombsAroundFields(int col, int row) {
+        int bombsAroundfield = 0;
+        int fCol;
+        int fRow;
 
-//        if (col==0&&row==0){ // (0,0)
-//            for (fCol = col; fCol <=col+1 ; fCol++) {
-//                for (fRow = row; fRow <=row+1 ; fRow++) {
-//                    if (bp.fields[fCol][fRow].isMine()){
-//                        bombsAroundfield++;
-//                    }
-//                }
-//            }
-//        }
-        /*
-        else if (col==0&&row==bp.row) { // (0,LAST)
-
-            for (fCol = col; fCol <= col+1 ; fCol++) {
-                for (fRow = row; fRow > row-1; fRow--) {
-                    if (bp.fields[fCol][fRow].isMine()){
+        //MIDTABLE
+        if (col == 0 && row == 0) { //TOP LEFT CORNER
+            for (fCol = col; fCol <= col + 1; fCol++) {
+                for (fRow = row; fRow <= row + 1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (col==bp.col&&row==0){ // (last,0)
-            for (fCol = col; fCol >= col-1 ; fCol--) {
-                for (fRow = row; fRow <=row+1 ; fRow++) {
-                    if (bp.fields[fCol][fRow].isMine()){
+            //TOP RIGHT CORNER
+        } else if (col == 0 && row == bp.row - 1) {
+            for (fCol = col; fCol <= col + 1; fCol++) {
+                for (fRow = row; fRow >= row-1; fRow--) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (col==bp.col&&row==bp.row){ // (last,last)
-            for (fCol = col; fCol >=col-1 ; fCol--) {
-                for (fRow = row; fRow >=row-1 ; fRow--) {
-                    if (bp.fields[fCol][fRow].isMine()){
+            //LEFT BOTTOM CORNER
+        } else if (col == bp.col-1 && row == 0) {
+            for (fCol = col; fCol >= col - 1; fCol--) {
+                for (fRow = row; fRow <= row+1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (col==0){ // FIRST COL OF BOARD W/O FIRST AND LAST FIELD BECAUSE OF EARLIER ELSE IFS
-            for (fCol = col; fCol <=col+1 ; fCol++) {
-                for (fRow = row-1; fRow <= row+1 ; fRow++) {
-                    if (bp.fields[fCol][fRow].isMine()){
+            //BOTTOM RIGHT CORNER
+        }else if (col == bp.col-1 && row == bp.row-1) {
+            for (fCol = col; fCol >= col-1; fCol--) {
+                for (fRow = row; fRow >= row-1; fRow--) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (col==bp.col){ // LAST COL OF BOARD W/O FIRST AND LAST FIELD BECAUSE OF EARLIER ELSE IFS
-            for (fCol = col; fCol >=col-1 ; fCol--) {
-                for (fRow = row-1; fRow <=row+1 ; fRow++) {
-                    if (bp.fields[fCol][fRow].isMine()){
+        }else if (col==0){
+            for (fCol = col; fCol <= col + 1; fCol++) {
+                for (fRow = row-1; fRow <= row + 1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (row==0) { //FIRST ROW OF BOARD W/O FIRST AND LAST FIELD BECAUSE OF EARLIER ELSE IFS
-            for (fCol = col-1; fCol <= col+1 ; fCol++) {
-                for (fRow = row; fRow <=row+1 ; fRow++) {
-                    if (bp.fields[fCol][fRow].isMine()){
+        } else if (col==bp.col-1) {
+            for (fCol = col; fCol >= col-1; fCol--) {
+                for (fRow = row-1; fRow <= row + 1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
-        }else if (row==bp.row) { // LAST ROW OF BOARD W/O FIRST AND LAST FIELD BECAUSE OF EARLIER ELSE IFS
-            for (fCol = col-1; fCol <= col+1 ; fCol++) {
-                for (fRow = row; fRow >=row-1 ; fRow--) {
-                    if (bp.fields[fCol][fRow].isMine()){
+        } else if (row==0) {
+            for (fCol = col-1; fCol <= col+1; fCol++) {
+                for (fRow = row; fRow <= row + 1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
+                        bombsAroundfield++;
+                    }
+                }
+            }
+        } else if (row==bp.row-1) {
+            for (fCol = col-1; fCol <= col+1; fCol++) {
+                for (fRow = row-1; fRow <= row; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
+                        bombsAroundfield++;
+                    }
+                }
+            }
+        }else {
+            for (fCol = col-1; fCol <= col + 1; fCol++) {
+                for (fRow = row-1; fRow <= row + 1; fRow++) {
+                    if (bp.fields[fCol][fRow].isMine()) {
                         bombsAroundfield++;
                     }
                 }
             }
         }
-        */
-//        else {
-//            for (fCol = col-1; fCol <= col+1 ; fCol++) {
-//                for (fRow = row-1; fRow <=row+1 ; fRow++) {
-//                    if (bp.fields[fCol][fRow].isMine()){
-//                        bombsAroundfield++;
-//                    }
-//                }
-//            }
-//        }
 
-
-            for (fCol = col-1; fCol <= col+1 ; fCol++) {
-                for (fRow = row-1; fRow <=row+1 ; fRow++) {
-                    if (bp.fields[fCol][fRow].isMine()){
-                        bombsAroundfield++;
-                    }
-                }
-            }
+        if (bp.fields[col][row].isMine()){
+            bombsAroundfield--;
+        }
 
         return bombsAroundfield;
     }

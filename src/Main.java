@@ -8,7 +8,6 @@ public class Main {
         BoardPanel board = new BoardPanel();
         BoardDrawingManager boardDrawingManager=new BoardDrawingManager(board);
         BoardActions boardActions=new BoardActions(board);
-
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Minesweeper");

@@ -5,6 +5,9 @@ public class Field {
     boolean flag;
     boolean mine;
     boolean revealed;
+    int bombsAround;
+    int x;
+    int y;
     public boolean isFlag() {
         return flag;
     }
@@ -29,6 +32,14 @@ public class Field {
         this.revealed = revealed;
     }
 
+    public int getBombsAround() {
+        return bombsAround;
+    }
+
+    public void setBombsAround(int bombsAround) {
+        bombsAround=BoardActions.bombsAroundFields(x,y);
+        this.bombsAround = bombsAround;
+    }
     public Field() {
     }
 
@@ -37,5 +48,10 @@ public class Field {
         this.mine = mine;
         this.revealed = revealed;
     }
-
+    public Field(boolean flag, boolean mine, boolean revealed, int bombsAround) {
+        this.flag = flag;
+        this.mine = mine;
+        this.revealed = revealed;
+        this.bombsAround = bombsAround;
+    }
 }

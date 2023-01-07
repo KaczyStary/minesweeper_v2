@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="struggling with mouseinput actions">
-      <change afterPath="$PROJECT_DIR$/src/BoardGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/flag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/flag_bomb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/no_reveal_bomb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/reveal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/res/reveal_bomb.png" afterDir="false" />
+    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="struggling with bombsaroundfield">
+      <change afterPath="$PROJECT_DIR$/src/res/0.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardDrawingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardDrawingManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MouseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MouseInput.java" afterDir="false" />
     </list>
@@ -73,7 +61,10 @@
       <updated>1672753871320</updated>
       <workItem from="1672753872737" duration="12996000" />
       <workItem from="1672839970716" duration="29888000" />
-      <workItem from="1672916427534" duration="11848000" />
+      <workItem from="1672916427534" duration="11908000" />
+      <workItem from="1673014095384" duration="51000" />
+      <workItem from="1673027728631" duration="4764000" />
+      <workItem from="1673101195191" duration="5377000" />
     </task>
     <task id="LOCAL-00001" summary="implemented most of minesweeper functions, going to dev jpanel">
       <created>1672775659462</created>
@@ -103,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672916348889</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="struggling with bombsaroundfield">
+      <created>1672949141758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672949141758</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +123,7 @@
     <MESSAGE value="trying to draw board" />
     <MESSAGE value="tmp" />
     <MESSAGE value="struggling with mouseinput actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="struggling with mouseinput actions" />
+    <MESSAGE value="struggling with bombsaroundfield" />
+    <option name="LAST_COMMIT_MESSAGE" value="struggling with bombsaroundfield" />
   </component>
 </project>

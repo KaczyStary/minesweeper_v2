@@ -19,7 +19,7 @@ public class BoardPanel extends JPanel implements Runnable {
     int gameScreenWitdh=tileSize*row;
     int gameScreenHeight=tileSize*col;
     Thread gameThread; //
-    Field[][] fields;
+    public Field[][] fields;
     MouseInput mouseInput=new MouseInput(); //MOUSE (mouseInput) INIT
 
     BoardDrawingManager boardM=new BoardDrawingManager(this); //BOARDDRAWING INIT
@@ -51,7 +51,7 @@ public class BoardPanel extends JPanel implements Runnable {
     }
     public void startGameThread() {
         GameState=GAME_STATE.RUNNING; //START GAME
-        GameDif = GAME_DIFFICULTY.NORMAL; //DEFAULT GAME DIFF
+        GameDif = GAME_DIFFICULTY.HARD; //DEFAULT GAME DIFF
 
         generateFields(); //GENERATE BOARD ONCE
         fillFieldWithMines(); //FILL BOARD FIELDS WITH MINES ONCE

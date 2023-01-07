@@ -8,8 +8,6 @@ public class BoardDrawingManager {
     FieldDraw[][] fieldDraws;
     FieldPic[] fieldPics;
 
-    BoardActions boardActions;
-
     public BoardDrawingManager(BoardPanel bp) {
         this.bp = bp;
         fieldPics=new FieldPic[15];
@@ -49,30 +47,33 @@ public class BoardDrawingManager {
             //REVEAL, BOMB
             fieldPics[5] = new FieldPic();
             fieldPics[5].image = ImageIO.read(getClass().getResourceAsStream("/res/reveal_bomb.png"));
-            //1 MINE AROUNF FIELD
+            //0 MINE AROUNF FIELD
             fieldPics[6] = new FieldPic();
-            fieldPics[6].image = ImageIO.read(getClass().getResourceAsStream("/res/1.png"));
-            //2 MINE AROUNF FIELD
+            fieldPics[6].image = ImageIO.read(getClass().getResourceAsStream("/res/0.png"));
+            //1 MINE AROUNF FIELD
             fieldPics[7] = new FieldPic();
-            fieldPics[7].image = ImageIO.read(getClass().getResourceAsStream("/res/2.png"));
-            //3 MINE AROUNF FIELD
+            fieldPics[7].image = ImageIO.read(getClass().getResourceAsStream("/res/1.png"));
+            //2 MINE AROUNF FIELD
             fieldPics[8] = new FieldPic();
-            fieldPics[8].image = ImageIO.read(getClass().getResourceAsStream("/res/3.png"));
-            //4 MINE AROUNF FIELD
+            fieldPics[8].image = ImageIO.read(getClass().getResourceAsStream("/res/2.png"));
+            //3 MINE AROUNF FIELD
             fieldPics[9] = new FieldPic();
-            fieldPics[9].image = ImageIO.read(getClass().getResourceAsStream("/res/4.png"));
-            //5 MINE AROUNF FIELD
+            fieldPics[9].image = ImageIO.read(getClass().getResourceAsStream("/res/3.png"));
+            //4 MINE AROUNF FIELD
             fieldPics[10] = new FieldPic();
-            fieldPics[10].image = ImageIO.read(getClass().getResourceAsStream("/res/5.png"));
-            //6 MINE AROUNF FIELD
+            fieldPics[10].image = ImageIO.read(getClass().getResourceAsStream("/res/4.png"));
+            //5 MINE AROUNF FIELD
             fieldPics[11] = new FieldPic();
-            fieldPics[11].image = ImageIO.read(getClass().getResourceAsStream("/res/6.png"));
-            //7 MINE AROUNF FIELD
+            fieldPics[11].image = ImageIO.read(getClass().getResourceAsStream("/res/5.png"));
+            //6 MINE AROUNF FIELD
             fieldPics[12] = new FieldPic();
-            fieldPics[12].image = ImageIO.read(getClass().getResourceAsStream("/res/7.png"));
-            //8 MINE AROUNF FIELD
+            fieldPics[12].image = ImageIO.read(getClass().getResourceAsStream("/res/6.png"));
+            //7 MINE AROUNF FIELD
             fieldPics[13] = new FieldPic();
-            fieldPics[13].image = ImageIO.read(getClass().getResourceAsStream("/res/8.png"));
+            fieldPics[13].image = ImageIO.read(getClass().getResourceAsStream("/res/7.png"));
+            //8 MINE AROUNF FIELD
+            fieldPics[14] = new FieldPic();
+            fieldPics[14].image = ImageIO.read(getClass().getResourceAsStream("/res/8.png"));
 
 
         } catch (IOException e) {
@@ -113,11 +114,11 @@ public class BoardDrawingManager {
 
         for (int sCol = 0; sCol <bp.col; sCol++) {
             for (int sRow = 0; sRow <bp.row ; sRow++) {
+
                 if (fieldDraws[sCol][sRow].getRevealed()==1){
                     if (fieldDraws[sCol][sRow].getMine()==0){
                         if (fieldDraws[sCol][sRow].getFlag()==0){
                             //REVEALED, NO MINE, NO FLAG
-
                             g2.drawImage(fieldPics[1].image,dX,dY,bp.tileSize,bp.tileSize,null);
                         }else if (fieldDraws[sCol][sRow].getFlag()==1){
                             //NEVER GOING TO HAPPEN
@@ -125,22 +126,24 @@ public class BoardDrawingManager {
                         }
                     } else if (fieldDraws[sCol][sRow].getMine()==1) {
                         if (fieldDraws[sCol][sRow].getFlag()==0){
+                            //ENDS GAME, LOSS
                             //REVEALED, MINE, NO FLAG
                             g2.drawImage(fieldPics[5].image,dX,dY,bp.tileSize,bp.tileSize,null);
                         }else if (fieldDraws[sCol][sRow].getFlag()==1){
+                            //NEVER GOING TO HAPPEN
                             //REVEALED, MINE, FLAG
                         }
                     }
                 } else if (fieldDraws[sCol][sRow].getRevealed()==0) {
                     if (fieldDraws[sCol][sRow].getMine()==0){
                         if (fieldDraws[sCol][sRow].getFlag()==0){
+                            //DEFAULT
                             //NO REVEALED, NO MINE, NO FLAG
                             g2.drawImage(fieldPics[0].image,dX,dY,bp.tileSize,bp.tileSize,null);
-
                         }else if (fieldDraws[sCol][sRow].getFlag()==1){
+                            //FLAGGED
                             //NO REVEALED, NO MINE, FLAG
                             g2.drawImage(fieldPics[2].image,dX,dY,bp.tileSize,bp.tileSize,null);
-
                         }
                     } else if (fieldDraws[sCol][sRow].getMine()==1) {
                         if (fieldDraws[sCol][sRow].getFlag()==0){
