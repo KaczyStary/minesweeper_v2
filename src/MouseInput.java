@@ -17,15 +17,15 @@ public class MouseInput implements MouseListener {
 
         //LEFT BUTTON
         if (e.getButton()==MouseEvent.BUTTON1){
-            BoardActions.toggleReveal(my,mx);
-            BoardActions.bombsAroundFields(my,mx);
-            System.out.println("bombs around [col]: "+my+" ,[row]: "+mx+": "+BoardActions.bombsAroundFields(my,mx));
+            BoardActions.toggleReveal(my-2,mx);
 
         }
         //RIGHT BUTTON
         if (e.getButton()==MouseEvent.BUTTON3){
-            BoardActions.toggleFlag(my,mx);
+            BoardActions.toggleFlag(my-2,mx);
         }
+
+
 
     }
 

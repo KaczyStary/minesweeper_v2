@@ -7,10 +7,12 @@ public class BoardDrawingManager {
     BoardPanel bp;
     FieldDraw[][] fieldDraws;
     FieldPic[] fieldPics;
+    BoardActions boardActions;
 
-    public BoardDrawingManager(BoardPanel bp) {
+    public BoardDrawingManager(BoardPanel bp,BoardActions boardActions) {
+        this.boardActions=boardActions;
         this.bp = bp;
-        fieldPics=new FieldPic[15];
+        fieldPics=new FieldPic[20];
         getFileImage();
     }
 
@@ -20,7 +22,7 @@ public class BoardDrawingManager {
         for (int gCol = 0; gCol < bp.col; gCol++) {
             for (int gRow = 0; gRow < bp.row; gRow++){
 
-                FieldDraw fieldDraw=new FieldDraw(0,0,0);
+                FieldDraw fieldDraw=new FieldDraw(gCol,gRow,0,0,0,BoardActions.bombsAroundFields(gCol,gRow));
 
                 fieldDraws[gCol][gRow]=fieldDraw;
             }
@@ -39,41 +41,44 @@ public class BoardDrawingManager {
             fieldPics[2] = new FieldPic();
             fieldPics[2].image = ImageIO.read(getClass().getResourceAsStream("/res/flag.png"));
             //NO REVEAL, BOMB
-            fieldPics[3] = new FieldPic();
-            fieldPics[3].image = ImageIO.read(getClass().getResourceAsStream("/res/no_reveal_bomb.png"));
+                fieldPics[3] = new FieldPic();
+                fieldPics[3].image = ImageIO.read(getClass().getResourceAsStream("/res/no_reveal_bomb.png"));
             //FLAG, BOMB
             fieldPics[4] = new FieldPic();
             fieldPics[4].image = ImageIO.read(getClass().getResourceAsStream("/res/flag_bomb.png"));
             //REVEAL, BOMB
             fieldPics[5] = new FieldPic();
             fieldPics[5].image = ImageIO.read(getClass().getResourceAsStream("/res/reveal_bomb.png"));
-            //0 MINE AROUNF FIELD
+            //0 MINE AROUND FIELD
             fieldPics[6] = new FieldPic();
             fieldPics[6].image = ImageIO.read(getClass().getResourceAsStream("/res/0.png"));
-            //1 MINE AROUNF FIELD
+            //1 MINE AROUND FIELD
             fieldPics[7] = new FieldPic();
             fieldPics[7].image = ImageIO.read(getClass().getResourceAsStream("/res/1.png"));
-            //2 MINE AROUNF FIELD
+            //2 MINE AROUND FIELD
             fieldPics[8] = new FieldPic();
             fieldPics[8].image = ImageIO.read(getClass().getResourceAsStream("/res/2.png"));
-            //3 MINE AROUNF FIELD
+            //3 MINE AROUND FIELD
             fieldPics[9] = new FieldPic();
             fieldPics[9].image = ImageIO.read(getClass().getResourceAsStream("/res/3.png"));
-            //4 MINE AROUNF FIELD
+            //4 MINE AROUND FIELD
             fieldPics[10] = new FieldPic();
             fieldPics[10].image = ImageIO.read(getClass().getResourceAsStream("/res/4.png"));
-            //5 MINE AROUNF FIELD
+            //5 MINE AROUND FIELD
             fieldPics[11] = new FieldPic();
             fieldPics[11].image = ImageIO.read(getClass().getResourceAsStream("/res/5.png"));
-            //6 MINE AROUNF FIELD
+            //6 MINE AROUND FIELD
             fieldPics[12] = new FieldPic();
             fieldPics[12].image = ImageIO.read(getClass().getResourceAsStream("/res/6.png"));
-            //7 MINE AROUNF FIELD
+            //7 MINE AROUND FIELD
             fieldPics[13] = new FieldPic();
             fieldPics[13].image = ImageIO.read(getClass().getResourceAsStream("/res/7.png"));
-            //8 MINE AROUNF FIELD
+            //8 MINE AROUND FIELD
             fieldPics[14] = new FieldPic();
             fieldPics[14].image = ImageIO.read(getClass().getResourceAsStream("/res/8.png"));
+            //9 MINE AROUND FIELD
+            fieldPics[15] = new FieldPic();
+            fieldPics[15].image = ImageIO.read(getClass().getResourceAsStream("/res/9.png"));
 
 
         } catch (IOException e) {
@@ -110,7 +115,7 @@ public class BoardDrawingManager {
 
     public void draw(Graphics2D g2){
         int dX=0;
-        int dY=0;
+        int dY=2*bp.tileSize;
 
         for (int sCol = 0; sCol <bp.col; sCol++) {
             for (int sRow = 0; sRow <bp.row ; sRow++) {
@@ -119,7 +124,7 @@ public class BoardDrawingManager {
                     if (fieldDraws[sCol][sRow].getMine()==0){
                         if (fieldDraws[sCol][sRow].getFlag()==0){
                             //REVEALED, NO MINE, NO FLAG
-                            g2.drawImage(fieldPics[1].image,dX,dY,bp.tileSize,bp.tileSize,null);
+                            g2.drawImage(fieldPics[fieldDraws[sCol][sRow].getMinesAround()+6].image,dX,dY,bp.tileSize,bp.tileSize,null);
                         }else if (fieldDraws[sCol][sRow].getFlag()==1){
                             //NEVER GOING TO HAPPEN
                             //REVEALED, NO MINE, FLAG
@@ -148,7 +153,11 @@ public class BoardDrawingManager {
                     } else if (fieldDraws[sCol][sRow].getMine()==1) {
                         if (fieldDraws[sCol][sRow].getFlag()==0){
                             //NO REVEALED, MINE, NO FLAG
-                            g2.drawImage(fieldPics[3].image,dX,dY,bp.tileSize,bp.tileSize,null);
+                            if (bp.GameMode== BoardPanel.GAMEMODE.DEV) {
+                                g2.drawImage(fieldPics[3].image, dX, dY, bp.tileSize, bp.tileSize, null);
+                            }else {
+                                g2.drawImage(fieldPics[0].image, dX, dY, bp.tileSize, bp.tileSize, null);
+                            }
                         }else if (fieldDraws[sCol][sRow].getFlag()==1){
                             //NO REVEALED, MINE, FLAG
                             g2.drawImage(fieldPics[4].image,dX,dY,bp.tileSize,bp.tileSize,null);
@@ -160,6 +169,16 @@ public class BoardDrawingManager {
             dY+=bp.tileSize;
             dX=0;
         }
+        int bombsLeftOnBoardDraw= boardActions.bombsLeftBoard();
+
+            if (boardActions.bombsLeftBoard() < 10) {
+                g2.drawImage(fieldPics[6].image, bp.gameScreenHeight / 2 - (bp.tileSize), 0, bp.tileSize, bp.tileSize, null);
+                g2.drawImage(fieldPics[bombsLeftOnBoardDraw + 6].image, bp.gameScreenHeight / 2, 0, bp.tileSize, bp.tileSize, null);
+            } else {
+                //BUG - CUNTER DISPLAYS CORRECTLY ON THE MIDDLE OF SCREEN ONLY IF COL = ROW, OTHERWISE COUNTS PROPERLY BUT MIGHT DISPLAY IN WRONG PLACE
+                g2.drawImage(fieldPics[(bombsLeftOnBoardDraw / 10) + 6].image, bp.gameScreenHeight / 2 - (bp.tileSize), 0, bp.tileSize, bp.tileSize, null);
+                g2.drawImage(fieldPics[(bombsLeftOnBoardDraw - ((bombsLeftOnBoardDraw / 10) * 10)) + 6].image, bp.gameScreenHeight / 2, 0, bp.tileSize, bp.tileSize, null);
+            }
     }
 }
 

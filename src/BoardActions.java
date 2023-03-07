@@ -1,14 +1,12 @@
 public class BoardActions {
     static BoardPanel bp;
-
     public BoardActions(BoardPanel bp){
         this.bp=bp;
     }
 
-
     static void toggleReveal(int col, int row) {
         //REVEAL FIELD
-        if (!bp.fields[col][row].isRevealed()) {
+        if (!bp.fields[col][row].isRevealed()&&!bp.fields[col][row].isFlag()) {
             bp.fields[col][row].setRevealed(true);
             //CHECK IF REVEALED FIELD HAS MINE
             if (bp.fields[col][row].isMine()){

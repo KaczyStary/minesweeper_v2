@@ -4,6 +4,13 @@ public class FieldDraw {
     int flag;
     int mine;
     int revealed;
+    int col;
+    int row;
+    int minesAround;
+
+    public int getMinesAround() {
+        return minesAround;
+    }
 
     public int getFlag() {
         return flag;
@@ -29,12 +36,13 @@ public class FieldDraw {
         this.revealed = revealed;
     }
 
-    public FieldDraw() {
-    }
-
-    public FieldDraw(int flag, int mine, int revealed) {
+    public FieldDraw(int col, int row,int flag, int mine, int revealed, int minesAround) {
+        this.col=col;
+        this.row=row;
         this.flag = flag;
         this.mine = mine;
         this.revealed = revealed;
+        this.minesAround=minesAround;
     }
+
 }

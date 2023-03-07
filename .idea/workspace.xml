@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="struggling with bombsaroundfield">
-      <change afterPath="$PROJECT_DIR$/src/res/0.png" afterDir="false" />
+    <list default="true" id="f99f6f73-c362-49f1-9905-3bb2825538ec" name="Changes" comment="going to change idea of creating field, would like to declare x and y, at very basic">
+      <change afterPath="$PROJECT_DIR$/src/res/9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardDrawingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardDrawingManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FieldDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FieldDraw.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MouseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MouseInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/0.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,16 @@
       <workItem from="1672916427534" duration="11908000" />
       <workItem from="1673014095384" duration="51000" />
       <workItem from="1673027728631" duration="4764000" />
-      <workItem from="1673101195191" duration="5377000" />
+      <workItem from="1673101195191" duration="7748000" />
+      <workItem from="1673120097977" duration="110000" />
+      <workItem from="1673186708101" duration="48000" />
+      <workItem from="1673212520550" duration="3436000" />
+      <workItem from="1673430321632" duration="2117000" />
+      <workItem from="1673440081599" duration="4912000" />
+      <workItem from="1673865714642" duration="11000" />
+      <workItem from="1673870276887" duration="754000" />
+      <workItem from="1677672597980" duration="676000" />
+      <workItem from="1678195343131" duration="1747000" />
     </task>
     <task id="LOCAL-00001" summary="implemented most of minesweeper functions, going to dev jpanel">
       <created>1672775659462</created>
@@ -101,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672949141758</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="going to change idea of creating field, would like to declare x and y, at very basic">
+      <created>1673106672678</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673106672678</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +142,7 @@
     <MESSAGE value="tmp" />
     <MESSAGE value="struggling with mouseinput actions" />
     <MESSAGE value="struggling with bombsaroundfield" />
-    <option name="LAST_COMMIT_MESSAGE" value="struggling with bombsaroundfield" />
+    <MESSAGE value="going to change idea of creating field, would like to declare x and y, at very basic" />
+    <option name="LAST_COMMIT_MESSAGE" value="going to change idea of creating field, would like to declare x and y, at very basic" />
   </component>
 </project>

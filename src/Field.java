@@ -1,13 +1,12 @@
-import java.awt.image.BufferedImage;
-
 public class Field {
 
     boolean flag;
     boolean mine;
     boolean revealed;
-    int bombsAround;
-    int x;
-    int y;
+    int minesAround;
+    int col;
+    int row;
+
     public boolean isFlag() {
         return flag;
     }
@@ -32,26 +31,12 @@ public class Field {
         this.revealed = revealed;
     }
 
-    public int getBombsAround() {
-        return bombsAround;
-    }
-
-    public void setBombsAround(int bombsAround) {
-        bombsAround=BoardActions.bombsAroundFields(x,y);
-        this.bombsAround = bombsAround;
-    }
-    public Field() {
-    }
-
-    public Field(boolean flag, boolean mine, boolean revealed) {
+    //FIELD CONSTRUCTOR
+    public Field(int col, int row, boolean flag, boolean mine, boolean revealed) {
+        this.col=col;
+        this.row=row;
         this.flag = flag;
         this.mine = mine;
         this.revealed = revealed;
-    }
-    public Field(boolean flag, boolean mine, boolean revealed, int bombsAround) {
-        this.flag = flag;
-        this.mine = mine;
-        this.revealed = revealed;
-        this.bombsAround = bombsAround;
     }
 }
